@@ -1,0 +1,62 @@
+# примеры API-запросов
+
+@baseUrl = http://localhost:8000/api
+
+# получение объявлений
+GET {{baseUrl}}/advertisements/
+Content-Type: application/json
+
+
+###
+# создание объявления
+POST {{baseUrl}}/advertisements/
+Content-Type: application/json
+Authorization: Token 
+
+{
+  "title": "Шкаф Купе_3",
+  "description": "Срочно",
+  "status": "DRAFT"
+}
+
+###
+
+# попытка поменять объявление
+PATCH {{baseUrl}}/advertisements/23/
+Content-Type: application/json
+Authorization: Token 
+
+{
+  "status": "DRAFT"
+}
+
+###
+
+# фильтрация по создателю
+GET {{baseUrl}}/advertisements/?creator=1
+Content-Type: application/json
+
+###
+
+# фильтрация по дате
+GET {{baseUrl}}/advertisements/?created_at_befor=2020-10-01
+Content-Type: application/json
+###
+DELETE {{baseUrl}}/advertisements/20/
+Content-Type: application/json
+Authorization: Token 
+###
+# Добавить в избранное 
+POST {{baseUrl}}/advertisements/15/add-favorite/
+Content-Type: application/application/json
+Authorization: Token 
+###
+# Посмотреть избранное
+GET {{baseUrl}}/advertisements/get-favorites/
+Content-Type: application/application/json
+Authorization: Token 
+###
+# Удалить объявление из избранного
+DELETE {{baseUrl}}/advertisements/15/remove-from-favorites/
+Content-Type: application/application/json
+Authorization: Token 
